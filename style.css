@@ -1,0 +1,145 @@
+/* Base Styles */
+body {
+    margin: 5px; /* Added 'px' for valid units */
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    cursor: none; /* Hides the default cursor if you're using a custom cursor image */
+    text-align: center; /* Centers inline elements and text by default */
+}
+
+div {
+    /* Step A: Center the block itself */
+    max-width: 800px; /* or any width you prefer */
+    margin: 0 auto; /* centers the block horizontally */
+
+    /* Step B: Center text inside the div */
+    text-align: center;
+}
+/* Remove underline from body links */
+body a {
+    text-decoration: none;
+}
+
+/* Header & Footer */
+header,
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+footer a {
+    color: #fff;
+}
+
+/* Main content spacing */
+main {
+    padding: 1rem;
+}
+
+/* About Section */
+.about-container {
+    display: flex;
+    flex-wrap: wrap; /* allows wrapping on smaller screens */
+    gap: 1rem;
+    justify-content: center; /* horizontally center items */
+    align-items: center; /* vertically center items within the container */
+}
+
+/* 
+  A separate container to stack the image and instruction text 
+  so they remain together, with the text directly under the image.
+*/
+.photo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center image and text horizontally */
+}
+
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    /* Using clip-path to create a circular image */
+    clip-path: circle(50% at center);
+    transition: opacity 0.5s ease-in-out; /* Smooth fade transition */
+    cursor: pointer; /* Indicates the image is clickable */
+}
+
+/* Instruction text styling */
+.click-instruction {
+    text-align: center;
+    font-size: 0.9em;
+    color: #555; /* Adjust color as needed */
+    margin-top: 0.5em;
+}
+
+/* API Data Section using CSS Grid */
+.user-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+    place-items: center; /* Centers items horizontally and vertically */
+}
+
+.user-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cat-img {
+    width: 500px;
+    height: auto;
+    margin: 0.5rem auto;
+    display: block;
+}
+
+.click-api {
+    text-align: center;
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 0.5em;
+}
+
+.pevnyc {
+    color: rgb(255, 242, 0);
+}
+
+/* Dialog Styles */
+dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .about-container {
+        flex-direction: column;
+    }
+}
+
+/* Ripple Effect Styles */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
