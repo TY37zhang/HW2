@@ -3,44 +3,118 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Test GitHub Pages</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 2rem;
-                background-color: #f0f0f0;
-                color: #333;
-            }
-            header,
-            footer {
-                text-align: center;
-                padding: 1rem 0;
-            }
-            main {
-                max-width: 800px;
-                margin: 2rem auto;
-                background: #fff;
-                padding: 2rem;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            }
-        </style>
+        <title>Homework 2</title>
+        <link rel="stylesheet" href="style.css" />
+
+        <!--  Meta Tags for Rich Link Previews -->
+        <meta property="og:title" content="Homework 2 - tz445" />
+        <meta
+            property="og:description"
+            content="A personal website for CS5356 HW3"
+        />
+        <meta
+            property="og:image"
+            content="https://TY37Zhang.github.io/HW2/img/pidan.jpeg"
+        />
+        <meta property="og:url" content="https://TY37Zhang.github.io/HW2/" />
+        <!-- browser-side javascript analytics tracking -->
+        <script
+            data-goatcounter="https://ty37zhang.goatcounter.com/count"
+            async
+            src="//gc.zgo.at/count.js"
+        ></script>
     </head>
     <body>
         <header>
-            <h1>Hello, GitHub Pages!</h1>
+            <h1>Hi there!</h1>
         </header>
+
         <main>
-            <p>
-                This is a simple test page to verify that GitHub Pages is
-                working correctly.
-            </p>
-            <p>
-                Once you've confirmed it, you can begin customizing your
-                personal homepage.
-            </p>
+            <!-- About me -->
+            <section id="about">
+                <h2>About Me</h2>
+                <div class="about-container">
+                    <div class="photo-container">
+                        <img
+                            id="profilePhoto"
+                            src="img/pidan.jpeg"
+                            alt="Pidan"
+                            class="profile-photo"
+                        />
+                        <p class="click-instruction">
+                            Click the image to see a new one!
+                        </p>
+                    </div>
+                    <p class="intro-text">
+                        Hello, my name is
+                        <a
+                            href="https://tianyinzhang.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Tianyin Zhang</a
+                        >, you can also call me Ty. I am currently studying for
+                        my MS degree @ Cornell Tech in NYC. While school works
+                        are heavy and recruiting is fustrating, I still try to
+                        mix my life with some fun thorugh the hobbies I have:
+                        Photography, Riding PEVs, and gaming with friends. I
+                        also enjoy building PC and keyboards. I am a big fan of
+                        Cats, and I currently have a 5 year old maine coon girl
+                        called Pidan. And I run an local PEV hobbisest group
+                        called
+                        <a
+                            class="pevnyc"
+                            href="PEVNYC.org"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >PEV NYC</a
+                        >
+                    </p>
+                </div>
+            </section>
+
+            <!-- API Data -->
+            <section id="api">
+                <h2>Random HTTP img with Cats</h2>
+                <div id="user-data" class="user-grid">
+                    <!-- HTTP Cat image will be inserted here by script.js -->
+                </div>
+                <p class="click-api">Click for surprise</p>
+            </section>
+
+            <!-- Extra Info -->
+            <section id="extra">
+                <h2>NYC Personal Electric Vehicle Riding Footages</h2>
+                <div id="video-container">
+                    <iframe
+                        id="info-video"
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/1sjxXucqU_8"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                    >
+                    </iframe>
+                </div>
+                <button id="toggle-video">Another Video</button>
+            </section>
         </main>
+
+        <!-- Footer -->
         <footer>
-            <p>&copy; 2025 Your Name</p>
+            <p>
+                &copy; 2025
+                <a
+                    href="https://tianyinzhang.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Tianyin Zhang </a
+                >. All rights reserved.
+            </p>
         </footer>
+
+        <script src="script.js"></script>
     </body>
 </html>
