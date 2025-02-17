@@ -6,7 +6,6 @@
         <title>Homework 2</title>
         <link rel="stylesheet" href="style.css" />
 
-        <!--  Meta Tags for Rich Link Previews -->
         <meta property="og:title" content="Homework 2 - tz445" />
         <meta
             property="og:description"
@@ -17,7 +16,7 @@
             content="https://TY37Zhang.github.io/HW2/img/pidan.jpeg"
         />
         <meta property="og:url" content="https://TY37Zhang.github.io/HW2/" />
-        <!-- browser-side javascript analytics tracking -->
+
         <script
             data-goatcounter="https://ty37zhang.goatcounter.com/count"
             async
@@ -26,7 +25,7 @@
     </head>
     <body>
         <header>
-            <h1>Hi there!</h1>
+            <h1 id="greeting">Hi</h1>
         </header>
 
         <main>
@@ -73,13 +72,53 @@
                 </div>
             </section>
 
-            <!-- API Data -->
+            <!-- HTTP Status Code Cat img -->
             <section id="api">
                 <h2>Random HTTP img with Cats</h2>
-                <div id="user-data" class="user-grid">
-                    <!-- HTTP Cat image will be inserted here by script.js -->
-                </div>
-                <p class="click-api">Click for surprise</p>
+                <div id="user-data" class="user-grid"></div>
+                <p class="click-api">Click img for surprise</p>
+            </section>
+
+            <!-- Exchange Rate Lookup Section -->
+            <section id="exchange-rate">
+                <h2>Exchange Rate Lookup</h2>
+                <label for="currency-select"
+                    >Select a currency (relative to USD):</label
+                >
+                <select id="currency-select">
+                    <option value="EUR">EUR - Euro</option>
+                    <option value="JPY">JPY - Japanese Yen</option>
+                    <option value="GBP">GBP - British Pound</option>
+                    <option value="AUD">AUD - Australian Dollar</option>
+                    <option value="CAD">CAD - Canadian Dollar</option>
+                    <option value="CHF">CHF - Swiss Franc</option>
+                    <option value="CNY">CNY - Chinese Yuan</option>
+                    <option value="HKD">HKD - Hong Kong Dollar</option>
+                    <option value="NZD">NZD - New Zealand Dollar</option>
+                    <option value="SEK">SEK - Swedish Krona</option>
+                    <option value="KRW">KRW - South Korean Won</option>
+                    <option value="SGD">SGD - Singapore Dollar</option>
+                    <option value="NOK">NOK - Norwegian Krone</option>
+                    <option value="MXN">MXN - Mexican Peso</option>
+                    <option value="INR">INR - Indian Rupee</option>
+                    <option value="RUB">RUB - Russian Ruble</option>
+                    <option value="ZAR">ZAR - South African Rand</option>
+                    <option value="TRY">TRY - Turkish Lira</option>
+                    <option value="BRL">BRL - Brazilian Real</option>
+                    <option value="TWD">TWD - New Taiwan Dollar</option>
+                </select>
+                <button id="lookup-rate">Check Rate</button>
+                <div id="exchange-result"></div>
+                <div id="last-updated"></div>
+                <hr />
+                <label for="usd-amount">Enter USD Amount:</label>
+                <input
+                    type="number"
+                    id="usd-amount"
+                    placeholder="Amount in USD"
+                />
+                <button id="calculate-rate">Calculate Conversion</button>
+                <div id="calculation-result"></div>
             </section>
 
             <!-- Extra Info -->

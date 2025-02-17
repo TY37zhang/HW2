@@ -1,96 +1,55 @@
-function generateCatImage() {
-    const catImagesContainer = document.getElementById("user-data");
-    // Clear any existing image
-    catImagesContainer.innerHTML = "";
+// header greeting
+document.addEventListener("DOMContentLoaded", function () {
+    const greetingEl = document.getElementById("greeting");
+    const now = new Date();
+    const hour = now.getHours();
+    let greeting = "";
 
-    // Define the array of HTTP status codes
-    const statusCodes = [
-        200, 201, 204, 301, 302, 400, 401, 403, 404, 418, 500, 503,
-    ];
-
-    // Pick a random code
-    const randomIndex = Math.floor(Math.random() * statusCodes.length);
-    const code = statusCodes[randomIndex];
-
-    // Create the image element
-    const catImage = document.createElement("img");
-    catImage.src = `https://http.cat/${code}`;
-    catImage.alt = `HTTP Cat ${code}`;
-    catImage.className = "cat-img"; // Use your CSS to style this image
-    catImage.style.cursor = "pointer"; // Indicate it's clickable
-
-    // When the image is clicked, generate a new one
-    catImage.addEventListener("click", generateCatImage);
-
-    // Append the image to the container
-    catImagesContainer.appendChild(catImage);
-}
-
-// Generate an image on page load
-generateCatImage();
-
-// Toggle between two YouTube videos in the Extra Info Section
-const toggleVideoBtn = document.getElementById("toggle-video");
-const infoVideo = document.getElementById("info-video");
-
-// Define the two YouTube embed URLs
-const videoURL1 = "https://www.youtube.com/embed/1sjxXucqU_8";
-const videoURL2 = "https://www.youtube.com/embed/05j6c06iFWE";
-
-toggleVideoBtn.addEventListener("click", () => {
-    // Check the current src and toggle
-    if (
-        infoVideo.src === videoURL1 ||
-        infoVideo.src === videoURL1 + "?enablejsapi=1"
-    ) {
-        infoVideo.src = videoURL2;
+    if (hour < 12) {
+        greeting = "Good Morning";
+    } else if (hour < 18) {
+        greeting = "Good Afternoon";
     } else {
-        infoVideo.src = videoURL1;
+        greeting = "Good Evening";
     }
+
+    greetingEl.textContent = greeting;
 });
 
-// Extra Interactivity: A cat paw GIF that replaces the mouse cursor
+// cat paw gif cursor
 const catPaw = document.createElement("img");
 catPaw.src = "img/bap-paw.gif";
 catPaw.style.position = "absolute";
-catPaw.style.width = "50px"; // Adjust size as needed
-catPaw.style.pointerEvents = "none"; // Allow clicks to pass through
+catPaw.style.width = "50px";
+catPaw.style.pointerEvents = "none";
 document.body.appendChild(catPaw);
 
 document.addEventListener("mousemove", (e) => {
-    // Position the GIF so it centers on the cursor
     catPaw.style.left = e.pageX - catPaw.offsetWidth / 2 + "px";
     catPaw.style.top = e.pageY - catPaw.offsetHeight / 2 + "px";
 });
 
-// Smooth Image Transition on Click with Toggling
+// profile photo switch
 const profilePhoto = document.getElementById("profilePhoto");
 
 profilePhoto.addEventListener("click", () => {
-    // Start fade-out by setting opacity to 0
     profilePhoto.style.opacity = "0";
 });
 
 profilePhoto.addEventListener("transitionend", (event) => {
-    // Ensure the opacity transition has ended and the image is fully faded out
     if (
         event.propertyName === "opacity" &&
         getComputedStyle(profilePhoto).opacity === "0"
     ) {
-        // Toggle the image source based on the current image.
-        // Since profilePhoto.src returns the full URL, check for the filename.
         const currentSrc = profilePhoto.src;
         const newImageSrc = currentSrc.includes("pidan2.jpeg")
             ? "img/pidan.jpeg"
             : "img/pidan2.jpeg";
 
-        // Preload the new image
         const preloader = new Image();
         preloader.src = newImageSrc;
         preloader.onload = () => {
-            // Once the new image is loaded, update the src and fade the image back in
             profilePhoto.src = newImageSrc;
-            // Force reflow so the browser registers the change immediately
             void profilePhoto.offsetWidth;
             profilePhoto.style.opacity = "1";
         };
@@ -101,27 +60,159 @@ profilePhoto.addEventListener("transitionend", (event) => {
     }
 });
 
+// onClick ripple effect
 document.addEventListener("click", function (e) {
-    // Create a span element to serve as the ripple
     const ripple = document.createElement("span");
     ripple.classList.add("ripple");
-
-    // Calculate the position of the ripple (adjusting for its size)
-    const size = 10; // size in pixels; adjust as needed
+    const size = 10;
     const x = e.pageX - size / 2;
     const y = e.pageY - size / 2;
 
-    // Apply position and size
     ripple.style.width = size + "px";
     ripple.style.height = size + "px";
     ripple.style.left = x + "px";
     ripple.style.top = y + "px";
 
-    // Append ripple to the document body
     document.body.appendChild(ripple);
 
-    // Remove the ripple element after the animation ends
     ripple.addEventListener("animationend", function () {
         ripple.remove();
     });
 });
+
+// cat status code img
+function generateCatImage() {
+    const catImagesContainer = document.getElementById("user-data");
+    catImagesContainer.innerHTML = "";
+
+    const statusCodes = [
+        200, 201, 204, 301, 302, 400, 401, 403, 404, 418, 500, 503,
+    ];
+    // Select random status code
+    const randomIndex = Math.floor(Math.random() * statusCodes.length);
+    const code = statusCodes[randomIndex];
+
+    const catImage = document.createElement("img");
+    catImage.src = `https://http.cat/${code}`;
+    catImage.alt = `HTTP Cat ${code}`;
+    catImage.className = "cat-img";
+    catImage.style.cursor = "pointer";
+
+    catImage.addEventListener("click", generateCatImage);
+    catImagesContainer.appendChild(catImage);
+}
+
+generateCatImage();
+
+// toggle between 2 vids
+const toggleVideoBtn = document.getElementById("toggle-video");
+const infoVideo = document.getElementById("info-video");
+
+const videoURL1 = "https://www.youtube.com/embed/1sjxXucqU_8";
+const videoURL2 = "https://www.youtube.com/embed/05j6c06iFWE";
+
+toggleVideoBtn.addEventListener("click", () => {
+    if (
+        infoVideo.src === videoURL1 ||
+        infoVideo.src === videoURL1 + "?enablejsapi=1"
+    ) {
+        infoVideo.src = videoURL2;
+    } else {
+        infoVideo.src = videoURL1;
+    }
+});
+
+// exchange rate calculator
+let currentRate = null;
+
+document.getElementById("lookup-rate").addEventListener("click", function () {
+    const currency = document.getElementById("currency-select").value;
+
+    fetch("https://open.er-api.com/v6/latest/USD")
+        .then((response) => response.json())
+        .then((data) => {
+            if (data && data.rates && data.rates[currency]) {
+                currentRate = data.rates[currency];
+
+                document.getElementById(
+                    "exchange-result"
+                ).innerText = `1 USD = ${currentRate} ${currency}`;
+
+                if (data.time_last_update_utc) {
+                    const utcString = data.time_last_update_utc;
+                    const dateObj = new Date(utcString);
+
+                    const localTime = dateObj.toLocaleString("en-US", {
+                        weekday: "short",
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                        second: "numeric",
+                        timeZoneName: "short",
+                    });
+
+                    document.getElementById(
+                        "last-updated"
+                    ).innerText = `Data pulled at: ${localTime}`;
+                } else {
+                    const fallbackLocalTime = new Date().toLocaleString(
+                        "en-US",
+                        {
+                            weekday: "short",
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                            hour: "numeric",
+                            minute: "numeric",
+                            second: "numeric",
+                            timeZoneName: "short",
+                        }
+                    );
+                    document.getElementById(
+                        "last-updated"
+                    ).innerText = `Data pulled at: ${fallbackLocalTime}`;
+                }
+            } else {
+                document.getElementById(
+                    "exchange-result"
+                ).innerText = `Exchange rate not available for ${currency}.`;
+                document.getElementById("last-updated").innerText = "";
+                currentRate = null;
+            }
+        })
+        .catch((error) => {
+            console.error("Error fetching exchange rate data:", error);
+            document.getElementById("exchange-result").innerText =
+                "Error fetching exchange rate data.";
+            document.getElementById("last-updated").innerText = "";
+            currentRate = null;
+        });
+});
+
+document
+    .getElementById("calculate-rate")
+    .addEventListener("click", function () {
+        const usdAmount = parseFloat(
+            document.getElementById("usd-amount").value
+        );
+
+        if (!currentRate) {
+            document.getElementById("calculation-result").innerText =
+                "Please check the rate first.";
+            return;
+        }
+
+        if (isNaN(usdAmount)) {
+            document.getElementById("calculation-result").innerText =
+                "Please enter a valid number.";
+            return;
+        }
+
+        const converted = usdAmount * currentRate;
+        const currency = document.getElementById("currency-select").value;
+        document.getElementById(
+            "calculation-result"
+        ).innerText = `${usdAmount} USD = ${converted.toFixed(2)} ${currency}`;
+    });
